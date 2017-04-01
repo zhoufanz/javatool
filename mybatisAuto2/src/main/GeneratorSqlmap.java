@@ -17,7 +17,7 @@ public class GeneratorSqlmap {
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;
 		//配置文件
-		File configFile = new File("generatorConfig.xml");
+		File configFile = new File("mybatisAuto2/generatorConfig.xml");
 		//配置文件解析器
 		ConfigurationParser cp = new ConfigurationParser(warnings);
 		//解析获得配置
