@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ycscm.app.base.repository.ProxySaveMapper">
+  <resultMap id="BaseResultMap" type="com.ycscm.app.model.base.ProxySave">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="AGENT_CODE" jdbcType="VARCHAR" property="agentCode" />
+    <result column="BILL_CODE" jdbcType="VARCHAR" property="billCode" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="DATE" property="updateTime" />
+    <result column="STATUS_TIME" jdbcType="DATE" property="statusTime" />
+    <result column="WRITEOFF_TIME" jdbcType="DATE" property="writeoffTime" />
+    <result column="TEL_PHONE" jdbcType="VARCHAR" property="telPhone" />
+    <result column="PICKUP_CODE" jdbcType="VARCHAR" property="pickupCode" />
+    <result column="CHECK_NUM" jdbcType="DECIMAL" property="checkNum" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="WRITEOFF_STATUS" jdbcType="DECIMAL" property="writeoffStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, AGENT_CODE, BILL_CODE, CREATE_TIME, UPDATE_TIME, STATUS_TIME, WRITEOFF_TIME, 
+    TEL_PHONE, PICKUP_CODE, CHECK_NUM, STATUS, WRITEOFF_STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from TAB_PROXY_SAVE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TAB_PROXY_SAVE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ycscm.app.model.base.ProxySave">
+    insert into TAB_PROXY_SAVE (ID, AGENT_CODE, BILL_CODE, 
+      CREATE_TIME, UPDATE_TIME, STATUS_TIME, 
+      WRITEOFF_TIME, TEL_PHONE, PICKUP_CODE, 
+      CHECK_NUM, STATUS, WRITEOFF_STATUS
+      )
+    values (#{id,jdbcType=DECIMAL}, #{agentCode,jdbcType=VARCHAR}, #{billCode,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, #{statusTime,jdbcType=DATE}, 
+      #{writeoffTime,jdbcType=DATE}, #{telPhone,jdbcType=VARCHAR}, #{pickupCode,jdbcType=VARCHAR}, 
+      #{checkNum,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, #{writeoffStatus,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ycscm.app.model.base.ProxySave">
+    insert into TAB_PROXY_SAVE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="agentCode != null">
+        AGENT_CODE,
+      </if>
+      <if test="billCode != null">
+        BILL_CODE,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="statusTime != null">
+        STATUS_TIME,
+      </if>
+      <if test="writeoffTime != null">
+        WRITEOFF_TIME,
+      </if>
+      <if test="telPhone != null">
+        TEL_PHONE,
+      </if>
+      <if test="pickupCode != null">
+        PICKUP_CODE,
+      </if>
+      <if test="checkNum != null">
+        CHECK_NUM,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="writeoffStatus != null">
+        WRITEOFF_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="agentCode != null">
+        #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="statusTime != null">
+        #{statusTime,jdbcType=DATE},
+      </if>
+      <if test="writeoffTime != null">
+        #{writeoffTime,jdbcType=DATE},
+      </if>
+      <if test="telPhone != null">
+        #{telPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupCode != null">
+        #{pickupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNum != null">
+        #{checkNum,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="writeoffStatus != null">
+        #{writeoffStatus,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ycscm.app.model.base.ProxySave">
+    update TAB_PROXY_SAVE
+    <set>
+      <if test="agentCode != null">
+        AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="statusTime != null">
+        STATUS_TIME = #{statusTime,jdbcType=DATE},
+      </if>
+      <if test="writeoffTime != null">
+        WRITEOFF_TIME = #{writeoffTime,jdbcType=DATE},
+      </if>
+      <if test="telPhone != null">
+        TEL_PHONE = #{telPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupCode != null">
+        PICKUP_CODE = #{pickupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNum != null">
+        CHECK_NUM = #{checkNum,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="writeoffStatus != null">
+        WRITEOFF_STATUS = #{writeoffStatus,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ycscm.app.model.base.ProxySave">
+    update TAB_PROXY_SAVE
+    set AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      STATUS_TIME = #{statusTime,jdbcType=DATE},
+      WRITEOFF_TIME = #{writeoffTime,jdbcType=DATE},
+      TEL_PHONE = #{telPhone,jdbcType=VARCHAR},
+      PICKUP_CODE = #{pickupCode,jdbcType=VARCHAR},
+      CHECK_NUM = #{checkNum,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      WRITEOFF_STATUS = #{writeoffStatus,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ycscm.app.model.base.ProxySave">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="AGENT_CODE" jdbcType="VARCHAR" property="agentCode" />
+    <result column="BILL_CODE" jdbcType="VARCHAR" property="billCode" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="DATE" property="updateTime" />
+    <result column="STATUS_TIME" jdbcType="DATE" property="statusTime" />
+    <result column="WRITEOFF_TIME" jdbcType="DATE" property="writeoffTime" />
+    <result column="TEL_PHONE" jdbcType="VARCHAR" property="telPhone" />
+    <result column="PICKUP_CODE" jdbcType="VARCHAR" property="pickupCode" />
+    <result column="CHECK_NUM" jdbcType="DECIMAL" property="checkNum" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="WRITEOFF_STATUS" jdbcType="DECIMAL" property="writeoffStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, AGENT_CODE, BILL_CODE, CREATE_TIME, UPDATE_TIME, STATUS_TIME, WRITEOFF_TIME, 
+    TEL_PHONE, PICKUP_CODE, CHECK_NUM, STATUS, WRITEOFF_STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from TAB_PROXY_SAVE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TAB_PROXY_SAVE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ycscm.app.model.base.ProxySave">
+    insert into TAB_PROXY_SAVE (ID, AGENT_CODE, BILL_CODE, 
+      CREATE_TIME, UPDATE_TIME, STATUS_TIME, 
+      WRITEOFF_TIME, TEL_PHONE, PICKUP_CODE, 
+      CHECK_NUM, STATUS, WRITEOFF_STATUS
+      )
+    values (#{id,jdbcType=DECIMAL}, #{agentCode,jdbcType=VARCHAR}, #{billCode,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, #{statusTime,jdbcType=DATE}, 
+      #{writeoffTime,jdbcType=DATE}, #{telPhone,jdbcType=VARCHAR}, #{pickupCode,jdbcType=VARCHAR}, 
+      #{checkNum,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, #{writeoffStatus,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ycscm.app.model.base.ProxySave">
+    insert into TAB_PROXY_SAVE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="agentCode != null">
+        AGENT_CODE,
+      </if>
+      <if test="billCode != null">
+        BILL_CODE,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="statusTime != null">
+        STATUS_TIME,
+      </if>
+      <if test="writeoffTime != null">
+        WRITEOFF_TIME,
+      </if>
+      <if test="telPhone != null">
+        TEL_PHONE,
+      </if>
+      <if test="pickupCode != null">
+        PICKUP_CODE,
+      </if>
+      <if test="checkNum != null">
+        CHECK_NUM,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="writeoffStatus != null">
+        WRITEOFF_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="agentCode != null">
+        #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="statusTime != null">
+        #{statusTime,jdbcType=DATE},
+      </if>
+      <if test="writeoffTime != null">
+        #{writeoffTime,jdbcType=DATE},
+      </if>
+      <if test="telPhone != null">
+        #{telPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupCode != null">
+        #{pickupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNum != null">
+        #{checkNum,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="writeoffStatus != null">
+        #{writeoffStatus,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ycscm.app.model.base.ProxySave">
+    update TAB_PROXY_SAVE
+    <set>
+      <if test="agentCode != null">
+        AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="statusTime != null">
+        STATUS_TIME = #{statusTime,jdbcType=DATE},
+      </if>
+      <if test="writeoffTime != null">
+        WRITEOFF_TIME = #{writeoffTime,jdbcType=DATE},
+      </if>
+      <if test="telPhone != null">
+        TEL_PHONE = #{telPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupCode != null">
+        PICKUP_CODE = #{pickupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNum != null">
+        CHECK_NUM = #{checkNum,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="writeoffStatus != null">
+        WRITEOFF_STATUS = #{writeoffStatus,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ycscm.app.model.base.ProxySave">
+    update TAB_PROXY_SAVE
+    set AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      STATUS_TIME = #{statusTime,jdbcType=DATE},
+      WRITEOFF_TIME = #{writeoffTime,jdbcType=DATE},
+      TEL_PHONE = #{telPhone,jdbcType=VARCHAR},
+      PICKUP_CODE = #{pickupCode,jdbcType=VARCHAR},
+      CHECK_NUM = #{checkNum,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      WRITEOFF_STATUS = #{writeoffStatus,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ycscm.app.model.base.ProxySave">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="AGENT_CODE" jdbcType="VARCHAR" property="agentCode" />
+    <result column="BILL_CODE" jdbcType="VARCHAR" property="billCode" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="DATE" property="updateTime" />
+    <result column="STATUS_TIME" jdbcType="DATE" property="statusTime" />
+    <result column="WRITEOFF_TIME" jdbcType="DATE" property="writeoffTime" />
+    <result column="TEL_PHONE" jdbcType="VARCHAR" property="telPhone" />
+    <result column="PICKUP_CODE" jdbcType="VARCHAR" property="pickupCode" />
+    <result column="CHECK_NUM" jdbcType="DECIMAL" property="checkNum" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="WRITEOFF_STATUS" jdbcType="DECIMAL" property="writeoffStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, AGENT_CODE, BILL_CODE, CREATE_TIME, UPDATE_TIME, STATUS_TIME, WRITEOFF_TIME, 
+    TEL_PHONE, PICKUP_CODE, CHECK_NUM, STATUS, WRITEOFF_STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from TAB_PROXY_SAVE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TAB_PROXY_SAVE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ycscm.app.model.base.ProxySave">
+    insert into TAB_PROXY_SAVE (ID, AGENT_CODE, BILL_CODE, 
+      CREATE_TIME, UPDATE_TIME, STATUS_TIME, 
+      WRITEOFF_TIME, TEL_PHONE, PICKUP_CODE, 
+      CHECK_NUM, STATUS, WRITEOFF_STATUS
+      )
+    values (#{id,jdbcType=DECIMAL}, #{agentCode,jdbcType=VARCHAR}, #{billCode,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, #{statusTime,jdbcType=DATE}, 
+      #{writeoffTime,jdbcType=DATE}, #{telPhone,jdbcType=VARCHAR}, #{pickupCode,jdbcType=VARCHAR}, 
+      #{checkNum,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, #{writeoffStatus,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ycscm.app.model.base.ProxySave">
+    insert into TAB_PROXY_SAVE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="agentCode != null">
+        AGENT_CODE,
+      </if>
+      <if test="billCode != null">
+        BILL_CODE,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="statusTime != null">
+        STATUS_TIME,
+      </if>
+      <if test="writeoffTime != null">
+        WRITEOFF_TIME,
+      </if>
+      <if test="telPhone != null">
+        TEL_PHONE,
+      </if>
+      <if test="pickupCode != null">
+        PICKUP_CODE,
+      </if>
+      <if test="checkNum != null">
+        CHECK_NUM,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="writeoffStatus != null">
+        WRITEOFF_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="agentCode != null">
+        #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="statusTime != null">
+        #{statusTime,jdbcType=DATE},
+      </if>
+      <if test="writeoffTime != null">
+        #{writeoffTime,jdbcType=DATE},
+      </if>
+      <if test="telPhone != null">
+        #{telPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupCode != null">
+        #{pickupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNum != null">
+        #{checkNum,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="writeoffStatus != null">
+        #{writeoffStatus,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ycscm.app.model.base.ProxySave">
+    update TAB_PROXY_SAVE
+    <set>
+      <if test="agentCode != null">
+        AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="statusTime != null">
+        STATUS_TIME = #{statusTime,jdbcType=DATE},
+      </if>
+      <if test="writeoffTime != null">
+        WRITEOFF_TIME = #{writeoffTime,jdbcType=DATE},
+      </if>
+      <if test="telPhone != null">
+        TEL_PHONE = #{telPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupCode != null">
+        PICKUP_CODE = #{pickupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNum != null">
+        CHECK_NUM = #{checkNum,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="writeoffStatus != null">
+        WRITEOFF_STATUS = #{writeoffStatus,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ycscm.app.model.base.ProxySave">
+    update TAB_PROXY_SAVE
+    set AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      STATUS_TIME = #{statusTime,jdbcType=DATE},
+      WRITEOFF_TIME = #{writeoffTime,jdbcType=DATE},
+      TEL_PHONE = #{telPhone,jdbcType=VARCHAR},
+      PICKUP_CODE = #{pickupCode,jdbcType=VARCHAR},
+      CHECK_NUM = #{checkNum,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      WRITEOFF_STATUS = #{writeoffStatus,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ycscm.app.model.base.ProxySave">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="AGENT_CODE" jdbcType="VARCHAR" property="agentCode" />
+    <result column="BILL_CODE" jdbcType="VARCHAR" property="billCode" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="DATE" property="updateTime" />
+    <result column="STATUS_TIME" jdbcType="DATE" property="statusTime" />
+    <result column="WRITEOFF_TIME" jdbcType="DATE" property="writeoffTime" />
+    <result column="TEL_PHONE" jdbcType="VARCHAR" property="telPhone" />
+    <result column="PICKUP_CODE" jdbcType="VARCHAR" property="pickupCode" />
+    <result column="CHECK_NUM" jdbcType="DECIMAL" property="checkNum" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="WRITEOFF_STATUS" jdbcType="DECIMAL" property="writeoffStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, AGENT_CODE, BILL_CODE, CREATE_TIME, UPDATE_TIME, STATUS_TIME, WRITEOFF_TIME, 
+    TEL_PHONE, PICKUP_CODE, CHECK_NUM, STATUS, WRITEOFF_STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from TAB_PROXY_SAVE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TAB_PROXY_SAVE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ycscm.app.model.base.ProxySave">
+    insert into TAB_PROXY_SAVE (ID, AGENT_CODE, BILL_CODE, 
+      CREATE_TIME, UPDATE_TIME, STATUS_TIME, 
+      WRITEOFF_TIME, TEL_PHONE, PICKUP_CODE, 
+      CHECK_NUM, STATUS, WRITEOFF_STATUS
+      )
+    values (#{id,jdbcType=DECIMAL}, #{agentCode,jdbcType=VARCHAR}, #{billCode,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, #{statusTime,jdbcType=DATE}, 
+      #{writeoffTime,jdbcType=DATE}, #{telPhone,jdbcType=VARCHAR}, #{pickupCode,jdbcType=VARCHAR}, 
+      #{checkNum,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, #{writeoffStatus,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ycscm.app.model.base.ProxySave">
+    insert into TAB_PROXY_SAVE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="agentCode != null">
+        AGENT_CODE,
+      </if>
+      <if test="billCode != null">
+        BILL_CODE,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="statusTime != null">
+        STATUS_TIME,
+      </if>
+      <if test="writeoffTime != null">
+        WRITEOFF_TIME,
+      </if>
+      <if test="telPhone != null">
+        TEL_PHONE,
+      </if>
+      <if test="pickupCode != null">
+        PICKUP_CODE,
+      </if>
+      <if test="checkNum != null">
+        CHECK_NUM,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="writeoffStatus != null">
+        WRITEOFF_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="agentCode != null">
+        #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="statusTime != null">
+        #{statusTime,jdbcType=DATE},
+      </if>
+      <if test="writeoffTime != null">
+        #{writeoffTime,jdbcType=DATE},
+      </if>
+      <if test="telPhone != null">
+        #{telPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupCode != null">
+        #{pickupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNum != null">
+        #{checkNum,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="writeoffStatus != null">
+        #{writeoffStatus,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ycscm.app.model.base.ProxySave">
+    update TAB_PROXY_SAVE
+    <set>
+      <if test="agentCode != null">
+        AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="statusTime != null">
+        STATUS_TIME = #{statusTime,jdbcType=DATE},
+      </if>
+      <if test="writeoffTime != null">
+        WRITEOFF_TIME = #{writeoffTime,jdbcType=DATE},
+      </if>
+      <if test="telPhone != null">
+        TEL_PHONE = #{telPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupCode != null">
+        PICKUP_CODE = #{pickupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNum != null">
+        CHECK_NUM = #{checkNum,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="writeoffStatus != null">
+        WRITEOFF_STATUS = #{writeoffStatus,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ycscm.app.model.base.ProxySave">
+    update TAB_PROXY_SAVE
+    set AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      STATUS_TIME = #{statusTime,jdbcType=DATE},
+      WRITEOFF_TIME = #{writeoffTime,jdbcType=DATE},
+      TEL_PHONE = #{telPhone,jdbcType=VARCHAR},
+      PICKUP_CODE = #{pickupCode,jdbcType=VARCHAR},
+      CHECK_NUM = #{checkNum,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      WRITEOFF_STATUS = #{writeoffStatus,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

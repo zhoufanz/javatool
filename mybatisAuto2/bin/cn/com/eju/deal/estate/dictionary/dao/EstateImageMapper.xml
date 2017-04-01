@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.eju.deal.estate.dictionary.dao.EstateImageMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.eju.deal.estate.dictionary.model.EstateImage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="estateImageNo" property="estateImageNo" jdbcType="VARCHAR" />
+    <result column="estateNo" property="estateNo" jdbcType="VARCHAR" />
+    <result column="firstLevel" property="firstLevel" jdbcType="INTEGER" />
+    <result column="secondLevel" property="secondLevel" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="NVARCHAR" />
+    <result column="describe" property="describe" jdbcType="NVARCHAR" />
+    <result column="dateUpdate" property="dateUpdate" jdbcType="TIMESTAMP" />
+    <result column="userIdUpdate" property="userIdUpdate" jdbcType="INTEGER" />
+    <result column="dateCreate" property="dateCreate" jdbcType="TIMESTAMP" />
+    <result column="userIdCreate" property="userIdCreate" jdbcType="INTEGER" />
+    <result column="delFlag" property="delFlag" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, estateImageNo, estateNo, firstLevel, secondLevel, weight, describe, dateUpdate, 
+    userIdUpdate, dateCreate, userIdCreate, delFlag
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.com.eju.deal.estate.dictionary.model.EstateImageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ED_EstateImage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ED_EstateImage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ED_EstateImage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.com.eju.deal.estate.dictionary.model.EstateImage" >
+    insert into ED_EstateImage (id, estateImageNo, estateNo, 
+      firstLevel, secondLevel, weight, 
+      describe, dateUpdate, userIdUpdate, 
+      dateCreate, userIdCreate, delFlag
+      )
+    values (#{id,jdbcType=INTEGER}, #{estateImageNo,jdbcType=VARCHAR}, #{estateNo,jdbcType=VARCHAR}, 
+      #{firstLevel,jdbcType=INTEGER}, #{secondLevel,jdbcType=INTEGER}, #{weight,jdbcType=NVARCHAR}, 
+      #{describe,jdbcType=NVARCHAR}, #{dateUpdate,jdbcType=TIMESTAMP}, #{userIdUpdate,jdbcType=INTEGER}, 
+      #{dateCreate,jdbcType=TIMESTAMP}, #{userIdCreate,jdbcType=INTEGER}, #{delFlag,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.eju.deal.estate.dictionary.model.EstateImage" >
+    insert into ED_EstateImage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="estateImageNo != null" >
+        estateImageNo,
+      </if>
+      <if test="estateNo != null" >
+        estateNo,
+      </if>
+      <if test="firstLevel != null" >
+        firstLevel,
+      </if>
+      <if test="secondLevel != null" >
+        secondLevel,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="describe != null" >
+        describe,
+      </if>
+      <if test="dateUpdate != null" >
+        dateUpdate,
+      </if>
+      <if test="userIdUpdate != null" >
+        userIdUpdate,
+      </if>
+      <if test="dateCreate != null" >
+        dateCreate,
+      </if>
+      <if test="userIdCreate != null" >
+        userIdCreate,
+      </if>
+      <if test="delFlag != null" >
+        delFlag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="estateImageNo != null" >
+        #{estateImageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="estateNo != null" >
+        #{estateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="firstLevel != null" >
+        #{firstLevel,jdbcType=INTEGER},
+      </if>
+      <if test="secondLevel != null" >
+        #{secondLevel,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=NVARCHAR},
+      </if>
+      <if test="describe != null" >
+        #{describe,jdbcType=NVARCHAR},
+      </if>
+      <if test="dateUpdate != null" >
+        #{dateUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userIdUpdate != null" >
+        #{userIdUpdate,jdbcType=INTEGER},
+      </if>
+      <if test="dateCreate != null" >
+        #{dateCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userIdCreate != null" >
+        #{userIdCreate,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.com.eju.deal.estate.dictionary.model.EstateImageExample" resultType="java.lang.Integer" >
+    select count(*) from ED_EstateImage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.eju.deal.estate.dictionary.model.EstateImage" >
+    update ED_EstateImage
+    <set >
+      <if test="estateImageNo != null" >
+        estateImageNo = #{estateImageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="estateNo != null" >
+        estateNo = #{estateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="firstLevel != null" >
+        firstLevel = #{firstLevel,jdbcType=INTEGER},
+      </if>
+      <if test="secondLevel != null" >
+        secondLevel = #{secondLevel,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=NVARCHAR},
+      </if>
+      <if test="describe != null" >
+        describe = #{describe,jdbcType=NVARCHAR},
+      </if>
+      <if test="dateUpdate != null" >
+        dateUpdate = #{dateUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userIdUpdate != null" >
+        userIdUpdate = #{userIdUpdate,jdbcType=INTEGER},
+      </if>
+      <if test="dateCreate != null" >
+        dateCreate = #{dateCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userIdCreate != null" >
+        userIdCreate = #{userIdCreate,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null" >
+        delFlag = #{delFlag,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.eju.deal.estate.dictionary.model.EstateImage" >
+    update ED_EstateImage
+    set estateImageNo = #{estateImageNo,jdbcType=VARCHAR},
+      estateNo = #{estateNo,jdbcType=VARCHAR},
+      firstLevel = #{firstLevel,jdbcType=INTEGER},
+      secondLevel = #{secondLevel,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=NVARCHAR},
+      describe = #{describe,jdbcType=NVARCHAR},
+      dateUpdate = #{dateUpdate,jdbcType=TIMESTAMP},
+      userIdUpdate = #{userIdUpdate,jdbcType=INTEGER},
+      dateCreate = #{dateCreate,jdbcType=TIMESTAMP},
+      userIdCreate = #{userIdCreate,jdbcType=INTEGER},
+      delFlag = #{delFlag,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
