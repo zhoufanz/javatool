@@ -6,38 +6,28 @@
 <generatorConfiguration>
 	<context id="testTables" targetRuntime="MyBatis3">
 		<!--插件只能放在sourceFolder的根目录中-->
-		<property name="javaFileEncoding" value="UTF-8"/>
 		<plugin type="MysqlPaginationPlugin" />
-
-		<commentGenerator type="util.MyCommentGenerator">
+	
+		<commentGenerator>
 			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-			<property name="suppressAllComments" value="false" />
+			<property name="suppressAllComments" value="true" />
 		</commentGenerator>
-
+		
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
-			connectionURL="jdbc:oracle:thin:localhost:1521:orcl.127.0.0.1" userId="YCGXSH"
-			password="YCGXSH">
-			<property name="remarksReporting" value="true"></property>
+			connectionURL="jdbc:oracle:thin:localhost:1521:orcl" userId="dishes"
+			password="dishes">
 		</jdbcConnection>
-		<!--oracle-->
-		<!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
-						connectionURL="jdbc:oracle:thin:@172.16.254.161:1521/KFDB"
-						userId="YCGCE" password="YCGCE">
-			<property name="remarksReporting" value="true"></property>
-		</jdbcConnection>-->
-
-
-
-		<!-- mysql -->
-		<!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.213.201:3306/junyao" userId="root"
-                        password="u6nERk5+G=Q:">
-                    <property name="useInformationSchema" value="true"></property>
-        </jdbcConnection>-->
-
-
-		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+		
+		
+		
+		<!--  <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/crm" userId="root"
+			password="root">
+		</jdbcConnection>  -->
+		
+		
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
 			NUMERIC 类型解析为java.math.BigDecimal -->
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
@@ -52,14 +42,14 @@
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
         <!-- targetProject:mapper映射文件生成的位置 -->
-		<sqlMapGenerator targetPackage="org.java.dao"
+		<sqlMapGenerator targetPackage="org.java.dao" 
 			targetProject=".\src">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 		<!-- targetPackage：mapper接口生成的位置 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="org.java.dao"
+			targetPackage="org.java.dao" 
 			targetProject=".\src">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
@@ -70,26 +60,22 @@
 		drop table if exists bas_dict;
 
 		 -->
-
-	<!--	 <table tableName="food"
+		 
+		 <table tableName="food"
 			enableDeleteByExample="false"
 			enableUpdateByExample="false"
 			selectByExampleQueryId="false"
 			selectByPrimaryKeyQueryId="false"
-		></table>-->
-
-		<table tableName="T_MM_ADD_STOCK_DETAIL" domainObjectName="MmAddStockDetail" enableDeleteByExample="false"
-			   enableUpdateByExample="false" selectByExampleQueryId="false"
-			   selectByPrimaryKeyQueryId="false" enableCountByExample="false" enableSelectByExample="false">
-			<!-- 字段驼峰命名 -->
-			<property name="useActualColumnNames" value="false"/>
-
-			<!-- 重写列名 -->
-			<!-- <columnOverride column="ParamName" property="ParamName"/> -->
-		</table>
-
-
-		<!--
+		></table>
+		 <table tableName="food"
+			enableDeleteByExample="false"
+			enableUpdateByExample="false"
+			selectByExampleQueryId="false"
+			selectByPrimaryKeyQueryId="false"
+		></table>
+		
+		
+		<!-- 
 		 -->
 		<!-- 有些表的字段需要指定java类型
 		 <table schema="" tableName="">

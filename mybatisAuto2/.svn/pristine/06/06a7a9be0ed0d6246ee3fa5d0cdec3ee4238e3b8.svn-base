@@ -40,9 +40,9 @@ public class GeneratorSqlmap {
 			System.out.println("dao,entity ok了");
 			
 			//根据实体的文件夹目录继续生成
-		/*	ContinueGenerate.continueGenerate(getEntityPath());
+			ContinueGenerate.continueGenerate(getEntityPath());
 			System.out.println("service,controller ok了");
-			System.out.println("去E盘下generate_mybatisXXXXXXXXXXXXX下找代码.txt");*/
+			System.out.println("去E盘下generate_mybatisXXXXXXXXXXXXX下找代码.txt");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

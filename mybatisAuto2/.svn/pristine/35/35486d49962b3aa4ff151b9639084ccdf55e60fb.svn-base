@@ -16,7 +16,7 @@ public class ContinueGenerate {
 	//指定生成service,controller的模板路径
 	private static String ftlPath="/ftl1_mysql_for_mybatis";
 	
-	//输出路径    第三方的的发生大幅度的十分反对反对
+	//输出路径
 	private static String[] generateTargetPath=null;
 	static{
 		generateTargetPath=new String[]{
