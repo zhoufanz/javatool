@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.MmPrizeDetailEntityMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.MmPrizeDetailEntity" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="BATCH_NUMBER" property="batchNumber" jdbcType="VARCHAR" />
+    <result column="PRIZE_CODE" property="prizeCode" jdbcType="VARCHAR" />
+    <result column="UNIT_PURCH_TOTAL" property="unitPurchTotal" jdbcType="DECIMAL" />
+    <result column="UNIT_PROPOSE_TOTAL" property="unitProposeTotal" jdbcType="DECIMAL" />
+    <result column="APPLICATION_NUMBER" property="applicationNumber" jdbcType="DECIMAL" />
+    <result column="PRIZE_UNIT_SITE_CODE_COUNT" property="prizeUnitSiteCodeCount" jdbcType="DECIMAL" />
+    <result column="DETAIL_REMARK" property="detailRemark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, BATCH_NUMBER, PRIZE_CODE, UNIT_PURCH_TOTAL, UNIT_PROPOSE_TOTAL, APPLICATION_NUMBER, 
+    PRIZE_UNIT_SITE_CODE_COUNT, DETAIL_REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_MM_PRIZE_DETAILE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_MM_PRIZE_DETAILE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.MmPrizeDetailEntity" >
+    insert into T_MM_PRIZE_DETAILE (ID, BATCH_NUMBER, PRIZE_CODE, 
+      UNIT_PURCH_TOTAL, UNIT_PROPOSE_TOTAL, APPLICATION_NUMBER, 
+      PRIZE_UNIT_SITE_CODE_COUNT, DETAIL_REMARK)
+    values (#{id,jdbcType=VARCHAR}, #{batchNumber,jdbcType=VARCHAR}, #{prizeCode,jdbcType=VARCHAR}, 
+      #{unitPurchTotal,jdbcType=DECIMAL}, #{unitProposeTotal,jdbcType=DECIMAL}, #{applicationNumber,jdbcType=DECIMAL}, 
+      #{prizeUnitSiteCodeCount,jdbcType=DECIMAL}, #{detailRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.MmPrizeDetailEntity" >
+    insert into T_MM_PRIZE_DETAILE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="batchNumber != null" >
+        BATCH_NUMBER,
+      </if>
+      <if test="prizeCode != null" >
+        PRIZE_CODE,
+      </if>
+      <if test="unitPurchTotal != null" >
+        UNIT_PURCH_TOTAL,
+      </if>
+      <if test="unitProposeTotal != null" >
+        UNIT_PROPOSE_TOTAL,
+      </if>
+      <if test="applicationNumber != null" >
+        APPLICATION_NUMBER,
+      </if>
+      <if test="prizeUnitSiteCodeCount != null" >
+        PRIZE_UNIT_SITE_CODE_COUNT,
+      </if>
+      <if test="detailRemark != null" >
+        DETAIL_REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNumber != null" >
+        #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeCode != null" >
+        #{prizeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPurchTotal != null" >
+        #{unitPurchTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="unitProposeTotal != null" >
+        #{unitProposeTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="applicationNumber != null" >
+        #{applicationNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="prizeUnitSiteCodeCount != null" >
+        #{prizeUnitSiteCodeCount,jdbcType=DECIMAL},
+      </if>
+      <if test="detailRemark != null" >
+        #{detailRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.MmPrizeDetailEntity" >
+    update T_MM_PRIZE_DETAILE
+    <set >
+      <if test="batchNumber != null" >
+        BATCH_NUMBER = #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeCode != null" >
+        PRIZE_CODE = #{prizeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPurchTotal != null" >
+        UNIT_PURCH_TOTAL = #{unitPurchTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="unitProposeTotal != null" >
+        UNIT_PROPOSE_TOTAL = #{unitProposeTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="applicationNumber != null" >
+        APPLICATION_NUMBER = #{applicationNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="prizeUnitSiteCodeCount != null" >
+        PRIZE_UNIT_SITE_CODE_COUNT = #{prizeUnitSiteCodeCount,jdbcType=DECIMAL},
+      </if>
+      <if test="detailRemark != null" >
+        DETAIL_REMARK = #{detailRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.MmPrizeDetailEntity" >
+    update T_MM_PRIZE_DETAILE
+    set BATCH_NUMBER = #{batchNumber,jdbcType=VARCHAR},
+      PRIZE_CODE = #{prizeCode,jdbcType=VARCHAR},
+      UNIT_PURCH_TOTAL = #{unitPurchTotal,jdbcType=DECIMAL},
+      UNIT_PROPOSE_TOTAL = #{unitProposeTotal,jdbcType=DECIMAL},
+      APPLICATION_NUMBER = #{applicationNumber,jdbcType=DECIMAL},
+      PRIZE_UNIT_SITE_CODE_COUNT = #{prizeUnitSiteCodeCount,jdbcType=DECIMAL},
+      DETAIL_REMARK = #{detailRemark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

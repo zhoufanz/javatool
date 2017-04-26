@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.MmPrizeEntityMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.MmPrizeEntity" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="PRIZE_CODE" property="prizeCode" jdbcType="VARCHAR" />
+    <result column="PRIZE_NAME" property="prizeName" jdbcType="VARCHAR" />
+    <result column="PRIZE_FLAG" property="prizeFlag" jdbcType="DECIMAL" />
+    <result column="JL_PURCH_TOTAL" property="jlPurchTotal" jdbcType="DECIMAL" />
+    <result column="JL_PROPOSE_TOTAL" property="jlProposeTotal" jdbcType="DECIMAL" />
+    <result column="CATEGORY_NUMBER" property="categoryNumber" jdbcType="DECIMAL" />
+    <result column="TOTAL_NUMBER" property="totalNumber" jdbcType="DECIMAL" />
+    <result column="PRIZE_SITE_CODE_COUNT" property="prizeSiteCodeCount" jdbcType="DECIMAL" />
+    <result column="INPUT_USER_CODE" property="inputUserCode" jdbcType="VARCHAR" />
+    <result column="INPUT_TIME" property="inputTime" jdbcType="DATE" />
+    <result column="PRIZE_REMARK" property="prizeRemark" jdbcType="VARCHAR" />
+    <result column="CREATE_USER_CODE" property="createUserCode" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="DATE" />
+    <result column="MODIFY_USER_CODE" property="modifyUserCode" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PRIZE_CODE, PRIZE_NAME, PRIZE_FLAG, JL_PURCH_TOTAL, JL_PROPOSE_TOTAL, CATEGORY_NUMBER, 
+    TOTAL_NUMBER, PRIZE_SITE_CODE_COUNT, INPUT_USER_CODE, INPUT_TIME, PRIZE_REMARK, CREATE_USER_CODE, 
+    CREATE_TIME, MODIFY_USER_CODE, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_MM_PRIZE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_MM_PRIZE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.MmPrizeEntity" >
+    insert into T_MM_PRIZE (ID, PRIZE_CODE, PRIZE_NAME, 
+      PRIZE_FLAG, JL_PURCH_TOTAL, JL_PROPOSE_TOTAL, 
+      CATEGORY_NUMBER, TOTAL_NUMBER, PRIZE_SITE_CODE_COUNT, 
+      INPUT_USER_CODE, INPUT_TIME, PRIZE_REMARK, 
+      CREATE_USER_CODE, CREATE_TIME, MODIFY_USER_CODE, 
+      MODIFY_TIME)
+    values (#{id,jdbcType=VARCHAR}, #{prizeCode,jdbcType=VARCHAR}, #{prizeName,jdbcType=VARCHAR}, 
+      #{prizeFlag,jdbcType=DECIMAL}, #{jlPurchTotal,jdbcType=DECIMAL}, #{jlProposeTotal,jdbcType=DECIMAL}, 
+      #{categoryNumber,jdbcType=DECIMAL}, #{totalNumber,jdbcType=DECIMAL}, #{prizeSiteCodeCount,jdbcType=DECIMAL}, 
+      #{inputUserCode,jdbcType=VARCHAR}, #{inputTime,jdbcType=DATE}, #{prizeRemark,jdbcType=VARCHAR}, 
+      #{createUserCode,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, #{modifyUserCode,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.MmPrizeEntity" >
+    insert into T_MM_PRIZE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="prizeCode != null" >
+        PRIZE_CODE,
+      </if>
+      <if test="prizeName != null" >
+        PRIZE_NAME,
+      </if>
+      <if test="prizeFlag != null" >
+        PRIZE_FLAG,
+      </if>
+      <if test="jlPurchTotal != null" >
+        JL_PURCH_TOTAL,
+      </if>
+      <if test="jlProposeTotal != null" >
+        JL_PROPOSE_TOTAL,
+      </if>
+      <if test="categoryNumber != null" >
+        CATEGORY_NUMBER,
+      </if>
+      <if test="totalNumber != null" >
+        TOTAL_NUMBER,
+      </if>
+      <if test="prizeSiteCodeCount != null" >
+        PRIZE_SITE_CODE_COUNT,
+      </if>
+      <if test="inputUserCode != null" >
+        INPUT_USER_CODE,
+      </if>
+      <if test="inputTime != null" >
+        INPUT_TIME,
+      </if>
+      <if test="prizeRemark != null" >
+        PRIZE_REMARK,
+      </if>
+      <if test="createUserCode != null" >
+        CREATE_USER_CODE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyUserCode != null" >
+        MODIFY_USER_CODE,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeCode != null" >
+        #{prizeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeName != null" >
+        #{prizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeFlag != null" >
+        #{prizeFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="jlPurchTotal != null" >
+        #{jlPurchTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="jlProposeTotal != null" >
+        #{jlProposeTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="categoryNumber != null" >
+        #{categoryNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="totalNumber != null" >
+        #{totalNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="prizeSiteCodeCount != null" >
+        #{prizeSiteCodeCount,jdbcType=DECIMAL},
+      </if>
+      <if test="inputUserCode != null" >
+        #{inputUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        #{inputTime,jdbcType=DATE},
+      </if>
+      <if test="prizeRemark != null" >
+        #{prizeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserCode != null" >
+        #{createUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="modifyUserCode != null" >
+        #{modifyUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.MmPrizeEntity" >
+    update T_MM_PRIZE
+    <set >
+      <if test="prizeCode != null" >
+        PRIZE_CODE = #{prizeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeName != null" >
+        PRIZE_NAME = #{prizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeFlag != null" >
+        PRIZE_FLAG = #{prizeFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="jlPurchTotal != null" >
+        JL_PURCH_TOTAL = #{jlPurchTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="jlProposeTotal != null" >
+        JL_PROPOSE_TOTAL = #{jlProposeTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="categoryNumber != null" >
+        CATEGORY_NUMBER = #{categoryNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="totalNumber != null" >
+        TOTAL_NUMBER = #{totalNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="prizeSiteCodeCount != null" >
+        PRIZE_SITE_CODE_COUNT = #{prizeSiteCodeCount,jdbcType=DECIMAL},
+      </if>
+      <if test="inputUserCode != null" >
+        INPUT_USER_CODE = #{inputUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        INPUT_TIME = #{inputTime,jdbcType=DATE},
+      </if>
+      <if test="prizeRemark != null" >
+        PRIZE_REMARK = #{prizeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserCode != null" >
+        CREATE_USER_CODE = #{createUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="modifyUserCode != null" >
+        MODIFY_USER_CODE = #{modifyUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=DATE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.MmPrizeEntity" >
+    update T_MM_PRIZE
+    set PRIZE_CODE = #{prizeCode,jdbcType=VARCHAR},
+      PRIZE_NAME = #{prizeName,jdbcType=VARCHAR},
+      PRIZE_FLAG = #{prizeFlag,jdbcType=DECIMAL},
+      JL_PURCH_TOTAL = #{jlPurchTotal,jdbcType=DECIMAL},
+      JL_PROPOSE_TOTAL = #{jlProposeTotal,jdbcType=DECIMAL},
+      CATEGORY_NUMBER = #{categoryNumber,jdbcType=DECIMAL},
+      TOTAL_NUMBER = #{totalNumber,jdbcType=DECIMAL},
+      PRIZE_SITE_CODE_COUNT = #{prizeSiteCodeCount,jdbcType=DECIMAL},
+      INPUT_USER_CODE = #{inputUserCode,jdbcType=VARCHAR},
+      INPUT_TIME = #{inputTime,jdbcType=DATE},
+      PRIZE_REMARK = #{prizeRemark,jdbcType=VARCHAR},
+      CREATE_USER_CODE = #{createUserCode,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      MODIFY_USER_CODE = #{modifyUserCode,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=DATE}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

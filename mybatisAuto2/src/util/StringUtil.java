@@ -79,7 +79,7 @@ public class StringUtil {
 			File[] files=directoryFile.listFiles();
 			for (int i = 0; i < files.length; i++) {
 				String fileName=files[i].getName();
-				fileName=fileName.substring(0,fileName.lastIndexOf("."));
+				fileName=fileName.substring(0,fileName.lastIndexOf("Entity"));
 				//实体类
 				if (fileName.indexOf("Example")<0) {
 					classNames.add(fileName);

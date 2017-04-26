@@ -20,9 +20,11 @@ public class ContinueGenerate {
 	private static String[] generateTargetPath=null;
 	static{
 		generateTargetPath=new String[]{
-			"E:\\generate_mybatisXXXXXXXXXXXXX\\service\\",
-			"E:\\generate_mybatisXXXXXXXXXXXXX\\service\\impl\\",
-			"E:\\generate_mybatisXXXXXXXXXXXXX\\controller\\"	
+			"D:\\generate_mybatisXXXXXXXXXXXXX\\service\\",
+			"D:\\generate_mybatisXXXXXXXXXXXXX\\service\\impl\\",
+			"D:\\generate_mybatisXXXXXXXXXXXXX\\controller\\",
+			"D:\\generate_mybatisXXXXXXXXXXXXX\\dao\\",
+			"D:\\generate_mybatisXXXXXXXXXXXXX\\dao\\impl\\"
 		};
 		for (int i = 0; i < generateTargetPath.length; i++) {
 			File file=new File(generateTargetPath[i]);
@@ -42,13 +44,23 @@ public class ContinueGenerate {
 	private static String[] serviceImplTemp={
 		"serviceImpl.ftl",
 		"org.java.service.impl",
-		"ServiceImpl"
+		"Service"
 	};
 	//生成controller控制类的模板,包名,类后缀
 	private static String[] controllerTemp={
 		"controller.ftl",
 		"org.java.controller",
 		"Controller"
+	};
+	private static String[] daoTemp={
+			"dao.ftl",
+			"org.java.dao",
+			"Dao"
+	};
+	private static String[] daoImplTemp={
+			"daoImpl.ftl",
+			"org.java.dao.impl",
+			"Dao"
 	};
 	
 	private static FreeMakerUtil freeMakerUtil = new FreeMakerUtil();
@@ -74,9 +86,11 @@ public class ContinueGenerate {
 	public static void continueGenerate(String entityPath) {
 		List<String> models=StringUtil.getDirectoryClassNameListString(entityPath);
 		for (String entity : models) {
-			create(serviceTemp[0], serviceTemp[1], entity,generateTargetPath[0]+entity+serviceTemp[2]+".java");
+			create(serviceTemp[0], serviceTemp[1], entity,generateTargetPath[0]+"I"+entity+serviceTemp[2]+".java");
 			create(serviceImplTemp[0], serviceImplTemp[1], entity,generateTargetPath[1]+entity+serviceImplTemp[2]+".java");
 			create(controllerTemp[0], controllerTemp[1], entity,generateTargetPath[2]+entity+controllerTemp[2]+".java");
+			create(daoTemp[0], daoTemp[1], entity,generateTargetPath[3]+"I"+entity+daoTemp[2]+".java");
+			create(daoImplTemp[0], daoImplTemp[1], entity,generateTargetPath[4]+entity+daoImplTemp[2]+".xml");
 		}
 	}
 }

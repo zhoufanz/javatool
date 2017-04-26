@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.MmPrizeDepartDetailEntityMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.MmPrizeDepartDetailEntity" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="COUNT_ID" property="countId" jdbcType="VARCHAR" />
+    <result column="PRIZE_NUIT_NUMBER" property="prizeNuitNumber" jdbcType="DECIMAL" />
+    <result column="PRIZE_SITE_CODE" property="prizeSiteCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, COUNT_ID, PRIZE_NUIT_NUMBER, PRIZE_SITE_CODE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_MM_PRIZE_DEPART_DETAIL
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_MM_PRIZE_DEPART_DETAIL
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.MmPrizeDepartDetailEntity" >
+    insert into T_MM_PRIZE_DEPART_DETAIL (ID, COUNT_ID, PRIZE_NUIT_NUMBER, 
+      PRIZE_SITE_CODE)
+    values (#{id,jdbcType=VARCHAR}, #{countId,jdbcType=VARCHAR}, #{prizeNuitNumber,jdbcType=DECIMAL}, 
+      #{prizeSiteCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.MmPrizeDepartDetailEntity" >
+    insert into T_MM_PRIZE_DEPART_DETAIL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="countId != null" >
+        COUNT_ID,
+      </if>
+      <if test="prizeNuitNumber != null" >
+        PRIZE_NUIT_NUMBER,
+      </if>
+      <if test="prizeSiteCode != null" >
+        PRIZE_SITE_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="countId != null" >
+        #{countId,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeNuitNumber != null" >
+        #{prizeNuitNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="prizeSiteCode != null" >
+        #{prizeSiteCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.MmPrizeDepartDetailEntity" >
+    update T_MM_PRIZE_DEPART_DETAIL
+    <set >
+      <if test="countId != null" >
+        COUNT_ID = #{countId,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeNuitNumber != null" >
+        PRIZE_NUIT_NUMBER = #{prizeNuitNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="prizeSiteCode != null" >
+        PRIZE_SITE_CODE = #{prizeSiteCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.MmPrizeDepartDetailEntity" >
+    update T_MM_PRIZE_DEPART_DETAIL
+    set COUNT_ID = #{countId,jdbcType=VARCHAR},
+      PRIZE_NUIT_NUMBER = #{prizeNuitNumber,jdbcType=DECIMAL},
+      PRIZE_SITE_CODE = #{prizeSiteCode,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

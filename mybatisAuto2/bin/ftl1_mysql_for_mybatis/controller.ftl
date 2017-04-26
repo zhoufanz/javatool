@@ -1,15 +1,10 @@
-package ${package};
 
-import javax.annotation.Resource;
-
-import org.java.base.BaseController;
-import org.java.service.${entity}Service;
-import org.springframework.stereotype.Controller;
 
 @Controller
-public class ${entity}Controller extends BaseController{
+@RequestMapping("/mm")
+public class ${entity}Controller extends AbstractController{
 	
 	@Resource
-	private ${entity}Service ${lowerentity}Service;
+	private I${entity}Service ${lowerentity}Service;
 	
 }

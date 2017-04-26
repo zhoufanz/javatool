@@ -1,27 +1,5 @@
 
-package ${package};
 
-import java.util.List;
+public interface I${entity}Service extends IBaseService<${entity}Entity, String>{
 
-import org.java.entity.${entity};
-import org.java.entity.${entity}Example;
-
-public interface ${entity}Service {
-	
-	//insert
-	int insert(${entity} record);
-	int insertSelective(${entity} record);
-	
-	//update
-	int updateByPrimaryKey(${entity} record);
-	int updateByPrimaryKeySelective(${entity} record);
-	
-	//delete
-	int deleteByPrimaryKey(Integer id);
-	//id search
-	${entity} selectByPrimaryKey(Integer id);
-	
-	//list search
-	List<${entity}> selectByExample(${entity}Example example);
-	int countByExample(${entity}Example example);
 }
